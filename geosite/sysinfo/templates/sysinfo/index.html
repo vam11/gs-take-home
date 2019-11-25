@@ -1,0 +1,27 @@
+{% load static %}
+
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="{% static 'sysinfo/style.css' %}"
+/>
+
+<h1>{{date}}</h1>
+
+<table border="2" style="width:100%">
+  <tr>
+    <td class="table_col">Request Type</td>
+    <td class="table_col">Request Date</td>
+    <td class="table_col">Comment</td>
+  </tr>
+  {% for entry in last_10 %}
+  <tr>
+    <td>{{ entry.req_type }}</td>
+    <td>{{ entry.req_date | date:"c" }}</td>
+    <td>{{ entry.comment }}</td>
+  </tr>
+  {% endfor %}
+</table>
+
+<h1>Server CPU Info</h1>
+<div class="multiline">{{ cpu_info }}</div>
